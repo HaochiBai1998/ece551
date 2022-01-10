@@ -1,0 +1,38 @@
+#include<cstdio>
+#include<cstdlib>
+#include<vector>
+#include<string>
+#include<fstream>
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main(int argc, char ** argv){
+  if(argc==1){
+    vector<string> v;
+    string line;
+    while(getline(cin,line)){
+      v.push_back(line);
+    }
+    sort(v.begin(),v.end());
+    for(typename vector<string>::const_iterator it=v.begin();it!=v.end();++it)
+      cout<<*it<<endl;
+  }
+  else{
+    for(int i=1;i<argc;i++){
+      ifstream iFile(argv[i]);
+      if(iFile.is_open()){
+	vector<string> v;
+	string line;
+	while(getline(iFile,line)){
+	  v.push_back(line);
+	}
+	iFile.close();
+	sort(v.begin(),v.end());
+    for(typename vector<string>::const_iterator it=v.begin();it!=v.end();++it)
+      cout<<*it;
+    cout<<endl;
+      }
+    }
+  }
+  return EXIT_SUCCESS;
+}

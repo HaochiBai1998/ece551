@@ -1,0 +1,248 @@
+Grading at 11/14/2021:16:48:15.701817
+For commit ID 8d53369512bde66e68771e432f822fcb10759f53
+Grading at Mon Nov 15 00:47:47 CST 2021
+
+=========================================================================
+Step 1
+
+Checking that story-step1 compiles
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+rm story-step1.o
++-----------------------------------------------------------------------+
+Test case 1
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 2
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 3
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 4
+Your program successfully indicated a failure case
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 5
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 6
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 7
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 8
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 9
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 10
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 11
+Your file matched the expected output
+                                                         [2/2]
+
+Step 1 total                                             [25.0/25]
+
+=========================================================================
+Step 2
+
+Checking that story-step2 compiles
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step2.c
+gcc -o story-step2 story-step2.o rand_story.o provided.o
+rm story-step2.o
++-----------------------------------------------------------------------+
+Test case 12
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 13
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 14
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 15
+Your program successfully indicated a failure case
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 16
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 17
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 18
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 19
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 20
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 21
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 22
+Your file matched the expected output
+                                                         [1/1]
+
+Step 2 total                                             [20.0/20]
+
+=========================================================================
+Step 3
+
+Checking that story-step3 compiles
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step3.c
+gcc -o story-step3 story-step3.o rand_story.o provided.o
+rm story-step3.o
++-----------------------------------------------------------------------+
+Test case 23
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 24
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 25
+Your program successfully indicated a failure case
+                                                         [1/1]
++-----------------------------------------------------------------------+
+Test case 26
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 27
+Your program successfully indicated a failure case
+                                                         [3/3]
++-----------------------------------------------------------------------+
+Test case 28
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 29
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 30
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 31
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 32
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 33
+Your file matched the expected output
+                                                         [2/2]
+
+Step 3 total                                             [25.0/25]
+
+=========================================================================
+Step 4
+
+Checking that story-step4 compiles
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step4.c
+gcc -o story-step4 story-step4.o rand_story.o provided.o
+rm story-step4.o
++-----------------------------------------------------------------------+
+Test case 34
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 35
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 36
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 37
+Your program successfully indicated a failure case
+                                                         [0.5/0.5]
++-----------------------------------------------------------------------+
+Test case 38
+Your program successfully indicated a failure case
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 39
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 40
+Your file matched the expected output
+                                                         [2/2]
++-----------------------------------------------------------------------+
+Test case 41
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 42
+Your file matched the expected output
+                                                         [4/4]
++-----------------------------------------------------------------------+
+Test case 43
+Your file matched the expected output
+                                                         [4/4]
+
+Step 4 total                                             [20.0/20]
+
+=========================================================================
+Code quality
+
+Abstration:    1
+Comments:      2
+Formatting:    3
+Others:        1
+Comments from your grader:
+Great job! Nice abstraction and formatting.There are several points I want to 
+share:
+
+a) mallocedElements doest not make sense to me. Maybe you can name it in a more 
+ reable way.
+
+b) abstract the error dealing with one function. This can make the code to be 
+concise.
+
+All in all good job and keep going!
+
+Quality total                                            [7/10]
+
+=========================================================================
+
+Overall Grade: 97

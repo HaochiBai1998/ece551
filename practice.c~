@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+
+struct _point{
+  double x;
+  double y;
+};
+typedef struct _point point;
+
+struct _rect{
+  point LeftBottom;
+  point RightTop;
+  point RightBottom;
+  point LeftTop;
+};
+
+double distanceCal(point P1 ,point P2){
+  return sqrt((P1.x-P2.x)*(P1.x-P2.x)+(P1.y-P2.y)*(P1.y-P2.y));
+}
+typedef struct _rect rect;
+double minDistance(point P,rect R){
+  if (P.x>=R.RightTop.x){
+    if (P.y>=R.RightTop.y)
+      return distanceCal(P,R.RightTop);
+    else if (P.y<R.RightTop.y && P.y>=R.RightBottom.y)
+      return P.x-R.RightTop.x;
+    else
+      return distanceCal(P,R.RightBottom);
+  }
+  else if (P.x<R.LeftTop.x){
+    if (P.y>=R.RightTop.y)
+      return distanceCal(P,R.LeftTop);
+    else if (P.y<R.RightTop.y && P.y>=R.RightBottom.y)
+      return R.LeftTop.x-P.x;
+    else
+      return distanceCal(P,R.LeftBottom);
+  }
+  else {
+    if (P.y>=R.RightTop.y)
+      return P.y-R.RightTop.y;
+    else if (P.y<R.RightBottom.y)
+      return R.RightBottom.y-P.y;
+    else
+      return 0;
+  }
+}
+int main(){
+  rect rect1;
+  rect1.LeftBottom.x=1;
+  rect1.LeftBottom.y=1;
+  rect1.RightTop.x=2;
+  rect1.RightTop.y=2;
+  rect1.RightBottom.x=2;
+  rect1.RightBottom.y=1;
+  rect1.LeftTop.x=1;
+  rect1.LeftTop.y=2;
+  double d;
+  point P1,P2,P3,P4,P5,P6,P7,P8,P9,P10;
+  P1.x=5;
+  P1.y=6;
+  P2.x=5/2;
+  P2.y=1/2;
+  printf("we need to find the minimum distance from a point x to a rectangle (%.2f,%.2f)",rect1.LeftBottom.x,rect1.LeftBottom.y);
+  printf(",(%.2f,%.2f)\n",rect1.RightTop.x,rect1.RightTop.y);
+  d=minDistance(P1,rect1);
+  printf("%.2f P1(%.2f,%.2f)\n",d,P1.x,P1.y);
+  d=minDistance(P2,rect1);
+  printf("%.2f P2(%.2f,%.2f)\n",d,P2.x,P2.y);
+  
+  return EXIT_SUCCESS;
+}

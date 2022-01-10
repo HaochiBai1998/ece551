@@ -1,0 +1,50 @@
+#include "rand_story.h"
+void getCatWords(mallocedElements * m,char * filename){
+  m->f=fopen(filename,"r");
+  if(m->f==NULL) {
+    freeAll(m);
+    exitFail("Cannot Open input File!");
+  }
+  char * line=NULL;
+  size_t sz;
+  m->cats=malloc(sizeof(*m->cats));
+  m->cats->n=0;
+  m->cats->arr=NULL;
+  while(getline(&line,&sz,m->f)>=0){
+    if(*line=='\0')
+      continue;
+    split(line,m);
+  }
+  free(line);
+  return;
+}
+void getStoryTemp(mallocedElements * m,char * filename){
+  m->f=fopen(filename,"r");
+  if (m->f==NULL){
+    freeAll(m);
+    exitFail("cannot Open Input File!");
+  }
+  char * line=NULL;
+  size_t sz;
+  m->strs=malloc(sizeof(*m->strs));
+  m->strsSize=0;
+  while(getline(&line,&sz,m->f)>=0){
+    if(strlen(line)==0)
+      continue;
+    parseLine(line,m);
+  }
+  free(line);
+  return;
+}
+int main(int argc, char ** argv){
+  //step1
+  if (argc!=3) exitFail("Invalid Input Format!");
+  //chooseWord("cat",NULL);
+  mallocedElements * m=init_m();
+  getCatWords(m,argv[1]);
+  printCats(m->cats);
+  getStoryTemp(m,argv[2]);
+  printStrs(m->strs,m->strsSize);
+  freeAll(m);
+  return EXIT_SUCCESS;
+}

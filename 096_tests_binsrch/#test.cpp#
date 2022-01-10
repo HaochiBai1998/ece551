@@ -1,0 +1,10 @@
+#include<iostream>
+
+extern int binarySearchForZero(Function<int, int> * f, int low, int high);
+int binarySearchForZero(Function<int, int> * f, int low, int high)
+
+int main(){
+
+  cout<<binarySearchForZero(
+  return 0;
+}

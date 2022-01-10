@@ -1,0 +1,33 @@
+#include "rand_story.h"
+int main(int argc, char ** argv){
+  //step1
+  if (argc!=3 && argc!=4) exitFail("Invalid Input Format!");
+  //chooseWord("cat",NULL);
+  mallocedElements * m=init_m();
+  if (argc==3){
+    getCatWords(m,argv[1]);
+    //printCats(m->cats);
+    if(fclose(m->f)!=0){
+      freeAll(m);
+      exitFail("Cannot Close File");
+    }
+    getStoryTemp(m,argv[2],1);
+    printStrs(m->strs,m->strsSize);
+  }
+  if(argc==4){
+    printf("%s\n",argv[1]);
+    if(strcmp(argv[1],"-n")) exitFail("Invalid Input Format!");
+    getCatWords(m,argv[2]);
+    //printWords(m->cats);
+    //printf("\n\n");
+    if(fclose(m->f)!=0){
+      freeAll(m);
+      exitFail("Cannot Close File");
+    }
+    getStoryTemp(m,argv[3],0);
+    //printWords(m->cats);
+    printStrs(m->strs,m->strsSize);
+  }
+  freeAll(m);
+  return EXIT_SUCCESS;
+}

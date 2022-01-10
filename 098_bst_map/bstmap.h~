@@ -1,0 +1,141 @@
+/*template<typename K, typename V>
+xclass Map {
+public:
+  virtual void add(const K & key, const V & value) = 0;
+  virtual const V & lookup(const K& key) const throw (std::invalid_argument) = 0;
+  virtual void remove(const K& key) = 0;
+  virtual ~Map<K,V>() {}
+};*/
+
+#include"map.h"
+#include<cstdio>
+#include<cstdlib>
+#include<iostream>
+#include<exception>
+#include<utility>
+using namespace std;
+template<typename K, typename V>
+class bstMap: public Map<K,V>{
+  class Node{
+  public:
+    pair<K,V> data;
+    Node * left;
+    Node * right;
+  Node():data(0,0),left(NULL),right(NULL){};
+  Node(K k,V v):data(k,v),left(NULL),right(NULL){};
+  };
+  Node * root;
+ public:
+  virtual void add(const K & key,const V & value){
+    Node ** current=&root;
+    while(*current!=NULL){
+      if((*current)->data.first==key){
+	(*current)->data.second=value;
+	return ;
+      }
+      else if((*current)->data.first>key){
+	current=&((*current)->left);
+      }
+      else
+	current=&((*current)->right);
+    }
+    if(*current==NULL){
+      *current=new Node(key,value);
+      return;
+    }
+  }
+  virtual const V & lookup(const K& key) const throw (std::invalid_argument){
+    Node * current=root;
+    while(current!=NULL){
+      if(current->data.first==key){
+	return current->data.second;
+      }
+      else if(current->data.first>key){
+        current=current->left;
+      }
+      else{
+        current=current->right;
+      }
+    } 
+    throw std::invalid_argument(key);
+  }
+  Node ** find(const K & key){
+    Node ** current=&root;
+    while(*current!=NULL){
+      if((*current)->data.first==key){
+        return current;
+      }
+      else if((*current)->data.first>key){
+        current=&(*current)->left;
+      }
+      else{
+        current=&(*current)->right;
+      }
+    }
+    return NULL;
+  }
+  virtual void remove(const K& key){
+    Node ** N=this->find(key);
+    if(N==NULL)
+      return;
+    if((*N)->left==NULL&&(*N)->right==NULL){
+      delete *N;
+      *N=NULL;
+    }
+    else if((*N)->left==NULL){
+      Node *temp=*N;
+      *N=(*N)->right;
+      delete temp;
+      temp=NULL;
+    }
+    else if((*N)->right==NULL){
+      Node *temp=*N;
+      *N=(*N)->left;
+      delete temp;
+      temp=NULL;
+    }
+    else {
+      Node **current=(&(*N)->left);
+      while((*current)->right!=NULL){
+	current=&(*current)->right;
+      }
+      (*N)->data=(*current)->data;
+      if((*current)->left!=NULL){
+	Node* temp=*current;
+	*current=(*current)->left;
+	delete temp;
+	temp=NULL;
+      }
+      else{
+	delete *current;
+	*current=NULL;
+      }
+    }
+    return;
+  }
+  void freeBst(Node * r){
+    if(r==NULL){
+      return;
+    }
+    freeBst(r->left);
+    freeBst(r->right);
+    cout<<"delete node:"<<r->data.first<<endl;
+    delete r;
+    
+  }
+  Node * getRoot(){
+    return root;
+  }
+  void print(Node * r){
+    if(r==NULL)
+      return ;
+    print(r->left);
+    cout<<r->data.first<<" "<<r->data.second<<endl;
+    print(r->right);
+  }
+  bstMap<K,V>():root(NULL){};
+  virtual ~bstMap<K,V>() {
+    this->freeBst(root);
+    root=NULL;
+  }  
+};

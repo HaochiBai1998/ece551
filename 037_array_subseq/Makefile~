@@ -1,0 +1,6 @@
+test:test-subseq.o maxSeq.o
+test-subseq.o:test-subseq.c
+	gcc -c -o test-subseq.o test-subseq.c
+maxSeq.o:maxSeq.c
+	gcc -c -o maxSeq.o maxSeq.c
+

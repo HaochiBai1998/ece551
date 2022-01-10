@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+char * convert(char * s, int numRows){
+    char ** ans=malloc(numRows*sizeof(*ans));
+    char ** ptr=malloc(numRows*sizeof(*ptr));
+    for(int i=0;i<numRows;i++){
+        ans[i]=malloc(sizeof(**ans));
+        ptr[i]=ans[i];
+    }
+    int count=0;
+    int mallocline=1;
+    int index=1;
+    for(;*s!='\0';s++){
+        *ans[count]=*s;
+        ans[count]++;
+        count+=index;
+        if(count==numRows){
+            index=-1;
+            mallocline++;   
+            for(int i=0;i<numRows;i++){
+                ptr[i]=realloc(ptr[i], (mallocline+1)*sizeof(**ans));
+            } 
+        }
+        if(count==0){
+            index=1;
+            mallocline++;
+            for(int i=0;i<numRows;i++){
+               ptr[i]=realloc(ptr[i], (mallocline+1)*sizeof(**ans));
+            }
+        }
+    }
+    for(int i=0;i<numRows;i++)
+        ans[i]='\0';
+    return *ptr;
+}
+
+int main(){
+  char * pch="appleappleappleapple";
+  char * ans=convert(pch,4);
+  printf("%s\n",pch);
+}

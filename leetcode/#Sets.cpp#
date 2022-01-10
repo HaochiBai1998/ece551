@@ -1,0 +1,82 @@
+#include<string>
+#include<cstdio>
+#include<iostream>
+#include<vector>
+
+using namespace std;
+template<typename T>
+class Set{
+  vector<T> sets;
+public:
+  void add(const T & element){
+    for(vector<T>::iterator it=sets.begin();it!=sets.end();++it){
+      if(*it==element)
+	return;
+    }
+    sets.push_back(element);
+  }
+  bool contains(const T & element) const{
+    for(vector<T>::iterator it=sets.begin();it!=sets.end();++it){
+      if(*it==element)
+        return true;
+    }
+    return false;
+  }
+  size_t cardinality() const{
+    return sets.size();
+  }
+  void remove(const T & element ){
+    for(vector<T>::iterator it=sets.begin();it!=sets.end();++it){
+      if(*it==element){
+        sets.erase(it);
+	return;
+      }
+    }
+    return;
+  }
+  Set<T> intersect(const Set<T> & rhs) const{
+    Set<T> InterS;
+    for(vector<T>::iterator it=sets.begin();it!=sets.end();++it){
+      if(rhs.contains(*it)){
+	InterS.add(*it);
+      }
+    }
+    return InterS;
+  }
+  
+  Set<T> myUnion(const Set<T> & rhs) const{
+    Set<T> UnionS;
+    for(vector<T>::iterator it_rhs=rhs.sets.begin();it_rhs!=rhs.sets.end();++it_rhs){
+      UnionS.add(it_rhs);
+    }
+    for(vector<T>::iterator it_lhs=sets.begin();it_lhs!=sets.end();++it_lhs){
+      UnionS.add(it_lhs);
+    }
+    return UnionS;
+  } 
+  Set<T> diff(const Set<T> & rhs) const{
+    Set<T> DiffS;
+    Set<T> UnionS=this->myUnion(rhs);
+    Set<T> InterS=this->intersect(rhs);
+    for(vector<T>::iterator it_U=UnionS.sets.begin();it_U!=UnionS.sets.end();++it_U){
+      if(!InterS.contains(*it_U)){
+	Diffs.add(*it_U);
+      }
+    }
+    return Diffs;
+  }
+};
+
+
+int main(){
+  Set<int> s1;
+  for(int i=0;i<10;i++){
+    s1.add(i);
+  }
+  Set<int> s2;
+  for(int i=3;i<7;i++){
+    s2.add(i);
+  }
+  
+  return EXIT_SUCCESS;
+}

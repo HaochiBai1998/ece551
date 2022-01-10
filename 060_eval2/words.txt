@@ -1,0 +1,7 @@
+:aaa
+animal:dragon
+animal:wolf
+place:cave
+adjective:peculier
+adjective:cute
+adjective:cold

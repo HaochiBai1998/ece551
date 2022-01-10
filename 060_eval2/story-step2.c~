@@ -1,0 +1,26 @@
+
+#include "rand_story.h"
+
+int main(int argc, char ** argv){
+  if(argc!=2) exitFail("Invalid input format!");
+  mallocedElements * m=init_m();
+  m->f=fopen(argv[1],"r");
+  if(m->f==NULL) {
+    freeAll(m);
+    exitFail("Cannot Open input File!");
+  }
+  char * line=NULL;
+  size_t sz;
+  m->cats=malloc(sizeof(m->cats));
+  m->cats->n=0;
+  m->cats->arr=NULL;
+  while(getline(&line,&sz,m->f)>=0){
+    if(*line=='\0')
+      continue;
+    split(line,m);
+  }
+  free(line);
+  printCats(m->cats);
+  freeAll(m);
+  return EXIT_SUCCESS;
+}

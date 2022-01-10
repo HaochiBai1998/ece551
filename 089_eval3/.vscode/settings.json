@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "exception": "cpp",
+        "typeinfo": "cpp",
+        "tuple": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "iosfwd": "cpp"
+    }
+}

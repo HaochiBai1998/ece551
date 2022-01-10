@@ -1,0 +1,9 @@
+#include "il.hpp"
+
+
+int main(){
+  LinkedList<int> il();
+  
+
+
+}
